@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+//empty object
+<p id="demo"></p>
+<script>
+    const person = { }
+
+    person.firstName = "Omar"
+    person.lastName = "faruq"
+    person.age = 28;
+    person.eyeColor = "black"
+
+    document.getElementById("demo").innerHTML = person.lastName + " is " + person.age + " years old. "
+</script>
+
+-->
+
+<!--
+//object construction
+<p id="demo"> </p>
+<script>
+//p capital letter
+function  Person (first, last , age, color)
+{
+    this.firstName = first;
+    this.lastName = last;
+    this.age = age;
+    this.eyeColor = color;
+}
+
+
+const myName = new Person ( "Omar","Faruq",28,"black")
+console.log(myName)
+
+document.getElementById("demo").innerHTML = myName.firstName + " is "
++ myName.age + " years old. ";
+</script>
+-->
+
+<!--
+<p id="demo"> </p>
+<script>
+    function  Person (first, last , age, color)
+    {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = color;
+    }
+
+
+    const myName = new Person ( "Omar","Faruq",28,"black");
+    // console.log(myName)
+    const oviName = new Person( "Arafat", "Ovi",28,"red" );
+
+    const myFather = new Person("John", "Doe", 50, "blue");
+    const myMother = new Person("Sally", "Rally", 48, "green");
+    const mySister = new Person("Anna", "Rally", 18, "green");
+
+    document.getElementById("demo").innerHTML = myName.firstName + " is "
+        + myName.age + " years old. ";
+
+    document.getElementById("demo").innerHTML = oviName.firstName+ " is "
+    +oviName.age+ " years old. ";
+
+    document.getElementById("demo").innerHTML = myFather.firstName+ " is "
+    +myFather.age+ " years old. ";
+    document.getElementById("demo").innerHTML = myMother.firstName+ " is "
+    +myMother.age+ " years old. ";
+    document.getElementById("demo").innerHTML = mySister.firstName+ " is "
+    +mySister.age+ " years old. ";
+
+</script>
+-->
+
+
+<!--
+<p id="demo"></p>
+
+<script>
+
+    // Constructor function for Person objects
+    function Person(first, last, age, eye) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eye;
+        this.nationality = "English";
+    }
+
+    // Create 2 Person objects
+    const myFather = new Person("John", "Doe", 50, "blue");
+    const myMother = new Person("Sally", "Rally", 48, "green");
+
+    // Display nationality
+    document.getElementById("demo").innerHTML =
+        "My father is " + myFather.nationality + ". My mother is " + myMother.nationality;
+</script>
+
+-->
+
+<!--
+Object.assign(target, ...sources)
+target: The target object to which properties will be copied.
+sources: One or more source objects whose properties will be copied to the target.
+
+<script>
+    const target = { a: 1, b: 2 };
+    const source = { b: 4, c: 5 };
+    const result = Object.assign(target, source);
+
+    console.log(result); // { a: 1, b: 4, c: 5 }
+    console.log(target); // { a: 1, b: 4, c: 5 } (target is modified)
+
+</script>
+-->
+<!--
+Object.assign(target, ...sources)
+<script>
+    const target = { a: 1 };
+    const source1 = { b: 2 };
+    const source2 = { c: 3 };
+
+    Object.assign(target, source1, source2);
+
+    console.log(target); // { a: 1, b: 2, c: 3 }
+
+</script>
+-->
+
+<!--
+<script>
+    // You can use Object.assign() to create a shallow copy of an object:
+    const obj = { a: 1, b: 2 };
+    const clone = Object.assign({}, obj);
+
+    console.log(clone); // { a: 1, b: 2 }
+    console.log(clone === obj); // false (different objects)
+</script>
+-->
+
+<!--
+<script>
+    const defaults = { theme: "light", debug: false };
+    const userSettings = { debug: true };
+
+    const settings = Object.assign({}, defaults, userSettings);
+    console.log(settings); // { theme: "light", debug: true }
+
+</script>
+-->
+
+<!--
+<script>
+    // You can also add properties to the new object using the propertiesObject parameter.
+
+    const parent = {
+        greet: function() {
+            console.log("Hello!");
+        }
+    };
+
+    const child = Object.create(parent, {
+        name: {
+            value: "Child",
+            writable: true,
+            enumerable: true,
+            configurable: true
+        }
+    });
+
+    console.log(child.name); // "Child"
+    child.greet(); // "Hello!"
+
+</script>
+-->
+
+
+//Prototype
+
+<!--
+    <p>You cannot add a new property to a constructor function.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        function Person(first, last, age, eye) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eye;
+    }
+
+        Person.nationality = "English";
+
+        const myFather = new Person("John", "Doe", 50, "blue");
+        const myMother = new Person("Sally", "Rally", 48, "green");
+
+        document.getElementById("demo").innerHTML =
+        "The nationality of my father is " + myFather.nationality;
+</script>
+-->
+
+<!--
+//To add a new property to a constructor, you must add it to the constructor function:
+<p>Using an object constructor:</p>
+
+<p id="demo"></p>
+
+<script>
+    function Person(first, last, age, eye) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eye;
+        this.nationality = "English";
+    }
+
+    const myFather = new Person("John", "Doe", 50, "blue");
+    const myMother = new Person("Sally", "Rally", 48, "green");
+
+    document.getElementById("demo").innerHTML =
+        "The nationality of my father is " + myFather.nationality + ". The nationality of my mother is " + myMother.nationality;
+</script>
+-->
+
+
+<!--
+//The Object.prototype is on the top of the prototype inheritance chain:
+<p>The prototype property allows you to add new methods to objects constructors:</p>
+
+<p id="demo"></p>
+
+<script>
+    function Person(first, last, age, eye) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eye;
+    }
+
+    Person.prototype.nationality = "English";
+
+    const myFather = new Person("John", "Doe", 50, "blue");
+    document.getElementById("demo").innerHTML =
+        "The nationality of my father is " + myFather.nationality;
+</script>
+
+-->
+
+
+<!--
+//The JavaScript prototype property also allows you to add new methods to objects constructors:
+<p id="demo"></p>
+
+<script>
+    function Person(first, last, age, eye) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eye;
+    }
+
+    Person.prototype.name = function() {
+        return this.firstName + " " + this.lastName
+    };
+
+    const myFather = new Person("John", "Doe", 50, "blue");
+
+    document.getElementById("demo").innerHTML =
+        "My father is " + myFather.name();
+</script>
+-->
+
+
+<!--
+//Object method
+<p id="dwmo"></p>
+<script>
+    // Create Target Object
+    const person1 = {
+        firstName: "John",
+        lastName: "Doe",
+        age: 50,
+        eyeColor: "blue"
+    };
+    // Create Source Object
+    const person2 = {firstName: "Anne",lastName: "Smith"};
+
+    Object.assign( person1, person2);
+    let text = Object.entries(person1);
+    document.getElementById("dwmo").innerText = text
+</script>
+-->
+
+<!--
+<p id="demo"></p>
+<script>
+    //Object.entries() makes it simple to use objects in loops:
+    const fruits = {Bananas:300, Oranges:200, Apples:500};
+
+    let text = "";
+    for( let [fruit ,value] of Object.entries(fruits)){
+        text += fruit + " : " + value + "<br>"
+    }
+document.getElementById("demo").innerHTML = text;
+</script>
+-->
+
+<!--
+<h2>The Object.fromEntries() Method</h2>
+
+<p>The number of pears are:</p>
+<p id="demo"></p>
+
+<script>
+    const fruits = [//nested array
+        ["apples", 300],
+        ["pears", 900],
+        ["bananas", 500]
+    ];
+    const myObj = Object.fromEntries(fruits);
+    document.getElementById("demo").innerHTML = myObj.pears;
+</script>
+-->
+
+<!--
+<h2>The Object.values() Method</h2>
+<p>Object.values() returns an array of values from an object:</p>
+
+<p id="demo"></p>
+
+<script>
+    const person = {
+        firstName : "John",
+        lastName  : "Doe",
+        age     : 50,
+        eyeColor  : "blue"
+    };
+
+    let text = Object.values(person)
+    document.getElementById("demo").innerHTML = text;
+    console.log(text)//return an array
+</script>
+-->
+
+<!--
+h2>The Object.groupBy() Method</h2>
+
+<p id="demo"></p>
+
+<script>
+    // Create an Array
+    const fruits = [
+        {name:"apples", quantity:300},
+        {name:"bananas", quantity:500},
+        {name:"oranges", quantity:200},
+        {name:"kiwi", quantity:150}
+    ];
+
+    // Callback function to select low volumes
+    function myCallback({ quantity }) {
+        return quantity > 200 ? "ok" : "low";
+    }
+
+    // Group by ok and low
+    const result = Object.groupBy(fruits, myCallback);
+
+    // Display Results
+    let text ="These fruits are Ok: <br>";
+    for (let [x,y] of result.ok.entries()) {
+        text += y.name + " " + y.quantity + "<br>";
+    }
+
+    text += "<br>These fruits are low: <br>";
+    for (let [x,y] of result.low.entries()) {
+        text += y.name + " " + y.quantity + "<br>";
+    }
+    document.getElementById("demo").innerHTML = text;
+</script>
+
+-->
+
+<!--
+<p>Object.keys() returns an enumerable array of the keys of an object:</p>
+
+<p id="demo"></p>
+
+<script>
+// Create an Object
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+
+// Get the Keys
+const keys = Object.keys(person);
+document.getElementById("demo").innerHTML = keys;
+</script>
+
+-->
+
+<!--
+2>Looping property values</h2>
+
+<p id="demo"></p>
+
+<script>
+    const person = {
+        fname:"John",
+        lname:"Doe",
+        age:25
+    };
+
+    let txt = "";
+    for (let x in person) {
+        txt += person[x] + " ";
+    }
+
+    document.getElementById("demo").innerHTML = txt;
+</script>
+-->
+
+
+//property
+
+<!--
+>The defineProperty() Method</h2>
+
+<p>This example changes a property value.</p>
+
+<p id="demo"></p>
+
+<script>
+    // Create an Object:
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        language: "EN"
+    };
+
+    // Change a Property
+    Object.defineProperty(person, "language", {value:"NO"})
+
+    // Display the Property
+    document.getElementById("demo").innerHTML = person.language;
+</script>
+-->
+
+<!--
+<h2>The getOwnPropertyNames() Method</h2>
+
+<p>This example list all the properties of an object.</p>
+
+<p id="demo"></p>
+
+<script>
+    // Create an Object:
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        language: "EN"
+    }
+
+    // Display all Properties
+    document.getElementById("demo").innerHTML = Object.getOwnPropertyNames(person);
+</script>
+-->
+
+<!--
+//Getter-Setter
+<h2>JavaScript Getters and Setters</h2>
+
+<p>Getters and setters allow you to get and set object properties via methods.</p>
+
+<p>This example uses a lang property to get the value of the language property:</p>
+
+<p id="demo"></p>
+
+<script>
+    // Create an object:
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        language: "en",
+        get lang() {
+            return this.language;
+        }
+    };
+
+    // Display data from the object using a getter:
+    document.getElementById("demo").innerHTML = person.lang;
+</script>
+-->
+
+<!--
+<p>This example uses a lang property to set the value of the language property.</p>
+
+<p id="demo"></p>
+
+<script>
+    // Create an object:
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        language: "NO",
+        set lang(value) {
+            this.language = value;
+        }
+    };
+
+    // Set a property using set:
+    person.lang = "en";
+
+    // Display data from the object:
+    document.getElementById("demo").innerHTML = person.language;
+</script>
+-->
+
+<!--
+<p>Object data can be accessed using property stored as a function.</p>
+
+<p id="demo"></p>
+
+<script>
+    // Create an object:
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        fullName: function() {
+            return this.firstName + " " + this.lastName;
+        }
+    };
+
+    // Display data from the object using a method:
+    document.getElementById("demo").innerHTML = person.fullName();
+</script>
+-->
+
+<!--
+<p>Getters and setters allow you to get and set properties via methods.</p>
+
+<p id="demo"></p>
+
+<script>
+    // Create an object:
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        language: "en",
+        get lang() {
+            return this.language.toUpperCase();
+        }
+    };
+    // Display data from the object using a getter:
+    document.getElementById("demo").innerHTML = person.lang;
+</script>
+-->
+
+<!--
+//Using the lang property, in this example, stores an upper case value in the language property:
+
+<p id="demo"></p>
+
+<script>
+    // Create an object:
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        language: "",
+        set lang(lang) {
+            this.language = lang.toUpperCase();
+        }
+    };
+
+    // Set a property using set:
+    person.lang = "en";
+
+    // Display data from the object:
+    document.getElementById("demo").innerHTML = person.language;
+</script>
+-->
+
+<!--
+<p id="demo"></p>
+
+<script>
+    "use strict"
+    // Create Object
+    const person = {firstName:"John", lastName:"Doe"};
+
+    // Prevent Extensions
+    Object.preventExtensions(person)
+
+    // Test Error
+    let text = "";
+    try {
+        person.nationality = "English";
+    }
+    catch (err) {
+        text = err;
+    }
+
+    document.getElementById("demo").innerHTML = text;
+</script>
+-->
+
+<!--
+<h2>The Object.preventExtensions() Method</h2>
+
+<p id="demo"></p>
+
+<script>
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    Object.preventExtensions(fruits);
+
+    // Test Error
+    let text = "";
+    try {
+        fruits.push("Kiwi");
+    }
+    catch (err) {
+        text = err;
+    }
+
+    document.getElementById("demo").innerHTML = text;
+</script>
+-->
+
+<!--
+<h2>The Object.isExtensible() Method</h2>
+
+<p id="demo"></p>
+
+<script>
+    // Create Object
+    const person = {firstName:"John", lastName:"Doe"};
+
+    // Prevent Extensions
+    Object.preventExtensions(person);
+
+    // This will return false
+    let answer =  Object.isExtensible(person)
+    document.getElementById("demo").innerHTML =answer;
+</script>
+-->
+
+<!--
+<h2>The Object.seal() Method</h2>
+//The Object.seal() method will fail silently in non-strict mode and throw a TypeError in strict mode.
+<p id="demo"></p>
+
+<script>
+    "use strict"
+    // Create Object
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        age: 50,
+        eyeColor: "blue"
+    };
+
+    // Seal Object
+    Object.seal(person)
+
+    // Test Error
+    let text = "";
+    try {
+        delete person.age;
+        text = Object.values(person);
+    }
+    catch (err) {
+        text = err;
+    }
+
+    document.getElementById("demo").innerHTML = text;
+</script>
+
+-->
+<!--
+<h2>The Object.seal() Method</h2>
+
+<p id="demo"></p>
+
+<script>
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    Object.seal(fruits);
+
+    // Test Error
+    let text = "";
+    try {
+        fruits.push("Kiwi");
+    }
+    catch (err) {
+        text = err;
+    }
+
+    document.getElementById("demo").innerHTML = text;
+</script>
+-->
+
+<!--
+<h2>The Object.isSealed() Method</h2>
+
+<p id="demo"></p>
+
+<script>
+    // Create Object
+    const person = {firstName:"John", lastName:"Doe"};
+
+    // Seal Object
+    Object.seal(person);
+
+    // This will return true
+    let answer =  Object.isSealed(person)
+    document.getElementById("demo").innerHTML =answer;
+</script>
+-->
+
+<!--
+<h2>The Object.freeze() Method</h2>
+//The Object.freeze() method will fail silently in non-strict mode and throw a TypeError in strict mode.
+<p id="demo"></p>
+
+<script>
+    "use strict"
+    // Create Object
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        age: 50,
+        eyeColor: "blue"
+    };
+
+    // Freeze Object
+    Object.freeze(person)
+
+    // Test Error
+    let text;
+    try {
+        person.age = 51;
+        text = Object.values(person);
+    }
+    catch (err) {
+        text = err;
+    }
+
+    document.getElementById("demo").innerHTML = text;
+</script>
+-->
+
+<!--
+<h2>The Object.isFrozen() Method</h2>
+
+<p id="demo"></p>
+
+<script>
+    // Create Object
+    const person = {firstName:"John", lastName:"Doe"};
+
+    // Freeze Object
+    Object.freeze(person);
+
+    let answer = Object.isFrozen(person);
+    document.getElementById("demo").innerHTML = answer;
+</script>
+-->
+</body>
+</html>
