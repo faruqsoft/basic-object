@@ -5,8 +5,10 @@
     <title>Title</title>
 </head>
 <body>
+
 <!--
 //empty object
+//Create an empty JavaScript object using {}, and add 4 properties:
 <p id="demo"></p>
 <script>
     const person = { }
@@ -44,6 +46,7 @@ document.getElementById("demo").innerHTML = myName.firstName + " is "
 -->
 
 <!--
+//Now we can use new Person() to create many new Person objects:
 <p id="demo"> </p>
 <script>
     function  Person (first, last , age, color)
@@ -79,13 +82,12 @@ document.getElementById("demo").innerHTML = myName.firstName + " is "
 </script>
 -->
 
-
 <!--
+// Constructor function for Person objects
 <p id="demo"></p>
 
 <script>
 
-    // Constructor function for Person objects
     function Person(first, last, age, eye) {
         this.firstName = first;
         this.lastName = last;
@@ -105,10 +107,14 @@ document.getElementById("demo").innerHTML = myName.firstName + " is "
 
 -->
 
+
 <!--
+
+<p>
 Object.assign(target, ...sources)
 target: The target object to which properties will be copied.
 sources: One or more source objects whose properties will be copied to the target.
+</p>
 
 <script>
     const target = { a: 1, b: 2 };
@@ -144,6 +150,7 @@ Object.assign(target, ...sources)
     console.log(clone === obj); // false (different objects)
 </script>
 -->
+
 
 <!--
 <script>
@@ -279,8 +286,8 @@ Object.assign(target, ...sources)
 -->
 
 
-<!--
 //Object method
+<!--
 <p id="dwmo"></p>
 <script>
     // Create Target Object
