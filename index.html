@@ -333,7 +333,7 @@ document.getElementById("demo").innerHTML = text;
         ["bananas", 500]
     ];
     const myObj = Object.fromEntries(fruits);
-    document.getElementById("demo").innerHTML = myObj.pears;
+    document.getElementById("demo").innerHTML = myObj.pears
 </script>
 -->
 
@@ -357,7 +357,7 @@ document.getElementById("demo").innerHTML = text;
 </script>
 -->
 
-<!--
+
 h2>The Object.groupBy() Method</h2>
 
 <p id="demo"></p>
@@ -372,18 +372,32 @@ h2>The Object.groupBy() Method</h2>
     ];
 
     // Callback function to select low volumes
-    function myCallback({ quantity }) {
+    function myCallback({ quantity }) {   //The { quantity } inside the function parameter means:
+        //"Take the quantity property from the object passed as an argument and make it
+        //directly available as a local variable quantity within the function."
         return quantity > 200 ? "ok" : "low";
     }
+    // const fruit = { name: "apples", quantity: 300 };
+    // function processFruit(fruit) {
+    //     return fruit.quantity > 200 ? "ok" : "low";
+    // }
+
 
     // Group by ok and low
     const result = Object.groupBy(fruits, myCallback);
 
     // Display Results
     let text ="These fruits are Ok: <br>";
-    for (let [x,y] of result.ok.entries()) {
-        text += y.name + " " + y.quantity + "<br>";
+    for (let [x,y] of result.ok.entries()) {//each {}/object are under fruits []/array ,so they have index nad value
+        text += y.name + " " + y.quantity + "<br>";//x={} index no. and y ={} value
     }
+    // const fruits = ["apples", "bananas"];
+    // for (let [index, value] of fruits.entries()) {
+    //     console.log(index, value);
+    // }
+    // Output:
+    // 0 "apples"
+    // 1 "bananas"
 
     text += "<br>These fruits are low: <br>";
     for (let [x,y] of result.low.entries()) {
@@ -428,8 +442,8 @@ document.getElementById("demo").innerHTML = keys;
     };
 
     let txt = "";
-    for (let x in person) {
-        txt += person[x] + " ";
+    for (let x in person) {//x is the variable used in the for...in loop to iterate over the keys (property names) of the person object.
+        txt += person[x] + " ";//x will take the name of one property in the person object (as a string).
     }
 
     document.getElementById("demo").innerHTML = txt;
